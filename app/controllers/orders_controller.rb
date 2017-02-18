@@ -87,7 +87,7 @@ class OrdersController < ApplicationController
       #       params[:order][:phone]
       #       params[:order][:description]
       #       params[:order][:age]
-      # 剛好是我們建立訂單需要的資料
+      # 剛好是我們建立一筆訂單所需要的資料
       params.require(:order).permit(:name, :email, :description, :age)
     end
 end

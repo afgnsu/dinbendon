@@ -5,10 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>姓名</th>
       <th>Email</th>
-      <th>Description</th>
-      <th>Age</th>
+      <th>訂單內容</th>
+      <th>年齡</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,14 +20,11 @@
         <td><%= order.email %></td>
         <td><%= order.description %></td>
         <td><%= order.age %></td>
-        <td><%= link_to 'Show', order_path(order) %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order_path(order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '檢視訂單', order_path(order), class: 'btn btn-info' %></td>
+        <td><%= link_to '編輯訂單', edit_order_path(order), class: 'btn btn-warning' %></td>
+        <td><%= link_to '刪除訂單', order_path(order), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Order', new_order_path %>
