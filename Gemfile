@@ -30,6 +30,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass'
 # 幫 user model 的 password 加密
 gem 'bcrypt', '~> 3.1.7'
+# debug 使用
+gem 'pry'
+gem 'awesome_print'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
