@@ -5,6 +5,9 @@
 <table class="table table-hover table-striped">
   <thead>
     <tr>
+      <th>票數</th>
+      <th>讚</th>
+      <th>噁</th>
       <th>姓名</th>
       <th>Email</th>
       <th>訂單內容</th>
@@ -16,6 +19,18 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
+        <td><%= order.total_votes %></td>
+        <td>
+          <%= link_to vote_order_path(order, vote: true), class: "btn btn-primary", method: 'post' do %>
+          讚
+          <% end %>
+        </td>
+        <td>
+          <%= link_to vote_order_path(order, vote: false), class: "btn btn-danger", method: 'post' do %>
+          噁
+          <% end %>
+        </td>
+
         <td><%= order.name %></td>
         <td><%= order.email %></td>
         <td><%= order.description %></td>

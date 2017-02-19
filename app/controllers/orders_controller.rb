@@ -76,6 +76,13 @@ class OrdersController < ApplicationController
     end
   end
 
+  def vote
+    @order = Order.find(params[:id])
+    @vote = Vote.create(voteable: @order, creator: current_user, vote: params[:vote])
+
+    redirect_to root_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
