@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # 設定首頁
+  root 'orders#index'
+
   resources :orders
 
   # /login 是連結到使用者登入的表單，登出是 /logout
