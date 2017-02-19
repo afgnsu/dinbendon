@@ -17,6 +17,8 @@ class OrdersController < ApplicationController
   # GET /orders/1
   def show
     # 對映到顯示單筆資料的頁面
+    # show 頁面的留言表單需要一個空物件
+    @comment = Comment.new
   end
 
   # GET /orders/new

@@ -2,25 +2,51 @@
 
 <%= render 'shared/title', title: '訂單資訊' %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @order.name %>
-</p>
+<table class="table">
+  <tr>
+    <td><strong>姓名:</strong></td>
+    <td><%= @order.name %></td>
+  </tr>
+    <td><strong>Email:</strong></td>
+    <td><%= @order.email %></td>
+  <tr>
+    <td><strong>訂單內容:</strong></td>
+    <td><%= @order.description %></td>
+  </tr>
+  <tr>
+    <td><strong>年齡:</strong></td>
+    <td><%= @order.age %></td>
+  </tr>
+</table>
 
-<p>
-  <strong>Email:</strong>
-  <%= @order.email %>
-</p>
+<h4>留言區:</h4>
 
-<p>
-  <strong>Description:</strong>
-  <%= @order.description %>
-</p>
+<% @order.comments.each do |comment| %>
+  <div class="row">
+    <div class="col-md-6 well">
+      <p>
+        <%= comment.content %>
+      </p>
+      <br>
+      <small>留言者： </small><%= "#{comment.user.name}" %>
+    </div>
+  </div>
+<% end %>
 
-<p>
-  <strong>Age:</strong>
-  <%= @order.age %>
-</p>
+<% if logged_in? %>
+
+  <h4>請留言:</h4>
+  <%= form_for [@order, @comment] do |f| %>
+    <div class="row">
+      <%= f.text_area :content, rows: 3, class: 'col-md-4' %>
+      <div class="col-md-2">
+        <%= f.submit '留言', class: 'btn btn-primary' %>
+      </div>
+    </div>
+    <br>
+  <% end %>
+
+<% end %>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   # 設定首頁
   root 'orders#index'
 
-  resources :orders
+  resources :orders do
+    # 嵌套/巢狀路由，這樣可以產生出 orders/1/comments/ 的 url
+    resources :comments, only: [:create]
+  end
+
   # 我只需要讓使用者註冊即可，多餘的 API 不要產出
   resources :users, only: [:new, :create]
 
