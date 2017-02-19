@@ -23,6 +23,23 @@
 
 <% @order.comments.each do |comment| %>
   <div class="row">
+    <div class='col-md-1 well text-center'>
+      <% if logged_in? %>
+        <%= link_to vote_order_comment_path(@order, comment, vote: true), class: "btn btn-primary", method: 'post' do %>
+          讚
+        <% end %>
+      <%end %>
+
+      <br/>
+      <%= comment.total_votes %> 票
+      <br/>
+
+      <% if logged_in? %>
+          <%= link_to vote_order_comment_path(@order, comment, vote: false), class: "btn btn-danger", method: 'post' do %>
+            噁
+          <% end %>
+      <% end %>
+    </div>
     <div class="col-md-6 well">
       <p>
         <%= comment.content %>

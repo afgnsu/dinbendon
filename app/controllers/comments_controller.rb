@@ -13,4 +13,12 @@ class CommentsController < ApplicationController
       render 'orders/show'
     end
   end
+
+  def vote
+    @order = Order.find(params[:order_id])
+    comment= Comment.find(params[:id])
+    @vote = Vote.create(voteable: comment, creator: current_user, vote: params[:vote])
+
+    redirect_to order_path(@order)
+  end
 end
