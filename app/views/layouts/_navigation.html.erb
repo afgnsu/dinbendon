@@ -1,13 +1,27 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <%= link_to "歡樂碼農訂便當系統", orders_path, class: 'navbar-brand' %>
+      <%= link_to '歡樂碼農訂便當系統', root_path, class: 'navbar-brand' %>
     </div>
-    <div class="collapse navbar-collapse">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <% if logged_in? %>
           <li><%= link_to '新增訂單', new_order_path %></li>
-          <li><%= link_to '登出', logout_path %></li>
+        <% else %>
+          <li><%= link_to '註冊', register_path %></li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+          <li class="dropdown">
+            <%= link_to '#', class: 'dropdown-toggle', 'data-toggle' => 'dropdown' do %>
+              <%= current_user.name %> <span class='caret'></span>
+            <% end %>
+            <ul class="dropdown-menu">
+              <li role="separator" class="divider"></li>
+              <li><%= link_to '登出', logout_path %></li>
+            </ul>
+          </li>
         <% else %>
           <li><%= link_to '登入', login_path %></li>
         <% end %>
