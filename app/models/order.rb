@@ -9,4 +9,6 @@ class Order < ApplicationRecord
   validates :name, length: { maximum: 10 }
   # 訂購者的 email 是必填，不然無法聯絡
   validates :email, presence: true
+
+  has_many :comments
 end
