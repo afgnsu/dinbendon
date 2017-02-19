@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
   resources :orders
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # /login 是連結到使用者登入的表單，登出是 /logout
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
+
 end

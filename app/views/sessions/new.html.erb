@@ -1,0 +1,19 @@
+<%= render '/shared/title', title: '使用者登入'%>
+
+<div class="form">
+  <!-- form_tag 也是產生表單用的方法，它和 form_tag 之間最大的差別在於，它不和任何一個 model 物件綁定-->
+  <%= form_tag '/login' do |f| %>
+    <div class="form-group">
+        <%= label_tag :name %>
+        <br>
+        <%= text_field_tag :name, params[:name] %>
+    </div>
+    <div class="form-group">
+        <%= label_tag :password %>
+        <br>
+        <%= password_field_tag :password, params[:password] %>
+    </div>
+    <br>
+    <%= submit_tag "登入", class: "btn btn-success" %>
+  <% end %>
+</div>
